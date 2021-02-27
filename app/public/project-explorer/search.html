@@ -36,12 +36,12 @@
                     
             <div class="container bg-light p-3">
                 <h3>Project Gallery</h3>
-                <form class="form-group">
+                <form class="form-group" name="searchForm">
                     
                     <div class="form-row d-flex justify-content-between align-items-center">
                         <div class="col-md-8">
-                            <label class="form-label" for="searchPanel"></label>
-                            <input class="form-control form-control-lg" type="search" id="searchPanel" name="searchPanel" placeholder="Search project names, authors, abstract and tags"/>
+                            <label class="form-label" for="searchType"></label>
+                            <input class="form-control form-control-lg" type="search" id="searchTerm" name="searchTerm" placeholder="Search project names, authors, abstract and tags"/>
                         </div>
                         <div class="col-md-2">
                             <div class="input-group">
@@ -51,13 +51,13 @@
                                         <span class="input-group-text" for="xname">Search by</span>
                                     </div>
                                     <button class="btn btn-outline-secondary dropdown-toggle" id="xname" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Name</button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Ade Chris</a>
-                                            <a class="dropdown-item" href="#">Kunle</a>
-                                            <a class="dropdown-item" href="#">Basit</a>
+                                        <select class="dropdown-menu">
+                                            <option class="dropdown-item" href="#">Name</option>
+                                            <option class="dropdown-item" href="#">Authors</option>
+                                            <option class="dropdown-item" href="#">Abstract</option>
                                             <div role="separator" class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Monsurah</a>
-                                        </div>
+                                            <option class="dropdown-item" href="#">Tags</option>
+                                        </select>
                                 </div>
                               </div>
                         </div>
