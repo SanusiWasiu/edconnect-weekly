@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Project Explorer</title>
+    
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+        <style>
+            h6{
+                border-bottom: 1px solid #CCC;
+                padding-bottom: 5px;
+            }
+            a{
+                color:white;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar bg-primary my-2 my-lg-0 px-2 px-lg-4">
+                
+                <form class="form-inline" name="searchForm">
+                    <a class="navbar-brand" href="#">Project Explorer</a>
+                    <input type="text" placeholder="Search Projects" class="form-control mr-sm-2">
+                    <button type="submit" class="btn btn-outline-light mr-sm-2">Search</button>
+                    <a href="#">Submit</a>
+                </form>
+                <div>
+                    <a href="register.html">Sign up</a>
+                    <a href="login.html">Login</a>
+                </div>
+            
+            </nav>
+            
+        </header>
+        
+        <main role="main">
+            <div class="container my-4">
+                <h4>Project 1</h4>
+                <div class="row">
+                    <div class="col">
+                        <p>Created By</p>
+                        <p>Ade Chris</p>
+                    </div>
+                    <div class="col">
+                        <p>Date Created</p>
+                        <p>2020-08-30</p>
+                    </div>
+                    <div class="col">
+                        <p>Last Updated</p>
+                        <p>2020-08-30</p>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary d-flex justify-content-end align-items-end">View Project</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                
+                <form class="form-group">
+                    
+                    <div class="form-row justify-content-between">
+                    
+                        <div class="col">
+                            <h6>Edit Project</h6>
+                            <label class="form-label" for="projectName">Project name</label>
+                            <input class="form-control" id="projectName" type="text" name="projectName" placeholder="Project 1"/><br/><br/>
+
+                            <label class="form-label" for="abstract"> Project Abstract</label>
+                            <textarea class="form-control" id="abstract" rows="10" type="textarea" name="abstract" placeholder="Project 1 is very interesting"></textarea><br/><br/>
+
+                            <label class="form-label" for="authors">Author(s)</label>
+                            <input class="form-control" id="authors" type="text" name="authors" placeholder="Ade Chris"/><br/><br/>
+
+                            <label class="form-label" for="tags">Tag(s)</label>
+                            <input class="form-control" type="text" name="tags" id="tags" placeholder="#web"/><br/><br/>
+                            
+                        </div>
+
+                        <div class="col">
+                            <h6>Manage Project files</h6>
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                  <input type="file" class="custom-file-input" id="inputGroupFile">
+                                  <label class="custom-file-label" for="inputGroupFile">Click to open file browser</label>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Project Files</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text text-center text-muted">No files uploaded yet</p>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+
+            
+                  
+            
+        </main>
+    
+        <footer class="container mt-5 bg-light d-flex justify-content-end">
+            <p><span class="text-muted">Project Explorer &copy; 2020 . </span>Edconnect</p>
+        </footer>
+    </body>
+</html>
+
+
+    

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Project Explorer</title>
+    
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+        <style>
+            h6{
+                border-bottom: 1px solid #CCC;
+                padding-bottom: 5px;
+            
+            }
+            a{
+                color:white;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar bg-primary my-2 my-lg-0 px-2 px-lg-4">
+                
+                <form class="form-inline" name="searchForm">
+                    <a class="navbar-brand" href="#">Project Explorer</a>
+                    <input type="text" placeholder="Search Projects" class="form-control mr-sm-2">
+                    <button type="submit" class="btn btn-outline-light mr-sm-2">Search</button>
+                    <a href="#">Submit</a>
+                </form>
+                <div>
+                    <a href="register.html">Sign up</a>
+                    <a href="login.html">Login</a>
+                </div>
+            
+            </nav>
+            
+        </header>
+        
+        <main role="main">
+            <div class="container my-4">
+                <h4>Project 1</h4>
+                <div class="row">
+                    <div class="col">
+                        <p>Created By</p>
+                        <p>Ade Chris</p>
+                    </div>
+                    <div class="col">
+                        <p>Date Created</p>
+                        <p>2020-08-30</p>
+                    </div>
+                    <div class="col">
+                        <p>Last Updated</p>
+                        <p>2020-08-30</p>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary d-flex justify-content-start">Edit Project</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                
+                <form class="form-group">
+                    
+                    <div class="form-row justify-content-between">
+                    
+                        <div class="col">
+                            <h6>Project Abstract</h6>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et netus et malesuada fames ac turpis egestas maecenas pharetra. Imperdiet sed euismod nisi porta lorem. Tellus id interdum velit laoreet.
+                            </p>
+
+                            <label class="form-label" for="abstract">Comments</label>
+                            <textarea class="form-control" id="abstract" rows="8" type="textarea" name="abstract" placeholder="Leave a comment"></textarea><br/><br/>
+                            
+                        </div>
+
+                        <div class="col">
+                            <h6>Project details</h6>
+                            <div class="card mb-5">
+                                <div class="card-header">
+                                    <h5>Author(s)</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Ade Chris</p>
+                                </div>
+                                <div class="card-footer">
+                                    <p class="card-text text-primary">#web</p>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Project Files</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text text-center text-muted">No files uploaded yet</p>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+
+            
+                  
+            
+        </main>
+    
+        <footer class="container mt-5 bg-light d-flex justify-content-end">
+            <p><span class="text-muted">Project Explorer &copy; 2020 . </span>Edconnect</p>
+        </footer>
+    </body>
+</html>
+
+
+    

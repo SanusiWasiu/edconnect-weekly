@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Project Explorer</title>
+    
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+        <style>
+            
+            a{
+                color:white;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar bg-primary my-2 my-lg-0 px-2 px-lg-4">
+                
+                <form class="form-inline" name="searchForm">
+                    <a class="navbar-brand" href="#">Project Explorer</a>
+                    <input type="search" placeholder="Search Projects" class="form-control mr-sm-2">
+                    <button type="submit" class="btn btn-outline-light mr-sm-2">Search</button>
+                    <a href="#">Submit</a>
+                </form>
+                <div>
+                    <a href="register.html">Sign up</a>
+                    <a href="login.html">Login</a>
+                </div>
+            
+            </nav>
+            
+        </header>
+        
+        <main role="main">
+                    
+            <div class="container">
+                <form class="form-group mx-auto my-5 w-75">
+                    <div class="container my-5 mx-auto w-75">
+                        <h1>Submit Project</h1>
+                        <label class="form-label" for="projectName">Project name</label>
+                        <input class="form-control" type="text" name="projectName" id="projectName" placeholder="Enter project name"/><br/><br/>
+
+                        <label class="form-label" for="abstract">Abstract</label>
+                        <textarea class="form-control" rows="10" type="textarea" id="abstract" name="abstract"></textarea><br/><br/>
+
+                        <label class="form-label" for="authors">Author(s)</label>
+                        <input class="form-control" type="text" name="authors" id="authors" placeholder="Enter author names (seperated by comma)"/><br/><br/>
+
+                        <label class="form-label" for="tags">Tags</label>
+                        <input class="form-control" type="text" id="tags" name="tags" placeholder="Use # to tag project with different topics (e.g. #javascript #mongodb)"/><br/><br/>
+                        
+                        <button type="submit" class="btn btn-primary">Continue</button>
+                    </div>
+                
+                </form>    
+            </div>
+
+            
+        </main>
+    
+        <footer class="container mt-5 bg-light d-flex justify-content-end">
+            <p><span class="text-muted">Project Explorer &copy; 2020 . </span>Edconnect</p>
+        </footer>
+    </body>
+</html>
+
+
+    
