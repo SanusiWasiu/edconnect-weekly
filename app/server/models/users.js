@@ -22,18 +22,18 @@ class Users extends DataModel {
         super()
     }*/
     authenticate(email, password) {
-        /*let auth = false
-        for (let i = 0; i<this.data.length; i++){
-            if (this.data[i].email === email && this.data[i].password === password){
+        let auth = false
+        for (let elem of this.data){
+            if (elem.email === email && elem.password === password){
                 auth = true
             }
         }
-        return auth*/
-        let auth = this.data.filter(elem => (elem.email === email && elem.password === password))
+        return auth
+        /*let auth = this.data.filter(elem => (elem.email === email && elem.password === password))
        if (auth.length > 0) {
            return true
        }
-       return false
+       return false*/
     }
 
     getByEmail(email) {
