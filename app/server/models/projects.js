@@ -13,7 +13,21 @@ class Project {
 
 class Projects extends DataModel {
     validate(obj) {
-
+        var former = true
+        var latter = false
+        for (let key in obj){
+            if (obj[key] == ''){
+                former = false
+            }
+        }
+        if (Array.isArray(obj.authors) && Array.isArray(obj.tags)){
+            latter = true
+        }
+        if(former === true && latter === true){
+            return true
+        }else{
+            return false
+        }
     }
 }
 
