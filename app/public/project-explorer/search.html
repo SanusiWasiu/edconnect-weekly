@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Project Explorer</title>
+    
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+        <style>
+            
+            a{
+                color:white;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar bg-primary my-2 my-lg-0 px-2 px-lg-4">
+                
+                <form class="form-inline" name="searchForm">
+                    <a class="navbar-brand" href="#">Project Explorer</a>
+                    <input type="search" placeholder="Search Projects" class="form-control mr-sm-2">
+                    <button type="submit" class="btn btn-outline-light mr-sm-2">Search</button>
+                    <a href="#">Submit</a>
+                </form>
+                <div>
+                    <a href="register.html">Sign up</a>
+                    <a href="login.html">Login</a>
+                </div>
+            
+            </nav>
+            
+        </header>
+        
+        <main role="main">
+                    
+            <div class="container bg-light p-3">
+                <h3>Project Gallery</h3>
+                <form class="form-group" name="searchForm">
+                    
+                    <div class="form-row d-flex justify-content-between align-items-center">
+                        <div class="col-md-8">
+                            <label class="form-label" for="searchType"></label>
+                            <input class="form-control form-control-lg" type="text" id="searchTerm" name="searchTerm" placeholder="Search project names, authors, abstract and tags"/>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="input-group">
+                                
+                                <div class="input-group-append">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" for="xname">Search by</span>
+                                    </div>
+                                    <button class="btn btn-outline-secondary dropdown-toggle" id="xname" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Name</button>
+                                        <select class="dropdown-menu">
+                                            <option class="dropdown-item" href="#">Name</option>
+                                            <option class="dropdown-item" href="#">Authors</option>
+                                            <option class="dropdown-item" href="#">Abstract</option>
+                                            <div role="separator" class="dropdown-divider"></div>
+                                            <option class="dropdown-item" href="#">Tags</option>
+                                        </select>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                        </div>
+                           
+                    </div>
+                    
+                </form>    
+            </div>
+
+            <div class="album">
+                <div class="container">
+                    <h4>All Projects <span class="text-muted">(0 result)</span></h4>
+                    <div class="row my-4">
+                        <div class="col-md-3">
+                            <div class="card my-2 py-4 px-2 box">
+                                <h6 class="card-title px-2 text-primary">Project Title</h6>
+                                <h6 class="card-subtitle my-lg-0 px-2 text-secondary">Author 1, Author 2</h6>
+                                <p class="card-text my-lg-0 py-2 px-2">some quick example text to build on the card title and make up the bulk of the card's content</p>
+                                <div class="card-bottom d-flex justify-content-between align-items-center">
+                                    <small class="text-primary">#html</small>
+                                    <small class="text-primary">#css</small>
+                                    <small class="text-primary">#javascript</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card my-2 py-4 px-2 box">
+                                <h6 class="card-title px-2 text-primary">Project Title</h6>
+                                <h6 class="card-subtitle my-lg-0 px-2 text-secondary">Author 1, Author 2</h6>
+                                <p class="card-text my-lg-0 py-2 px-2">some quick example text to build on the card title and make up the bulk of the card's content</p>
+                                <div class="card-bottom d-flex justify-content-between align-items-center">
+                                    <small class="text-primary">#html</small>
+                                    <small class="text-primary">#css</small>
+                                    <small class="text-primary">#javascript</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>          
+                </div>
+            </div>        
+        </main>
+    
+        <footer class="container mt-5 bg-light d-flex justify-content-end">
+            <p><span class="text-muted">Project Explorer &copy; 2020 . </span>Edconnect</p>
+        </footer>
+    </body>
+</html>
+
+
+    
