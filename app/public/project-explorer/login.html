@@ -29,7 +29,7 @@
                 </div>
             </nav>
             
-            <nav class="navbar bg-primary my-2 my-lg-0 px-2 px-lg-4 d-none" id="logged-in">
+            <!-- <nav class="navbar bg-primary my-2 my-lg-0 px-2 px-lg-4 d-none" id="logged-in">
                 
                 <form class="form-inline" name="searchForm">
                     <a class="navbar-brand" href="#">Project Explorer</a>
@@ -42,14 +42,25 @@
                     <span id="username"></span>
                 </div>
             
-            </nav>
+            </nav> -->
             
         </header>
         
         <main role="main">
             <div class="container">
-                <form class="form-group mx-auto my-5 w-75">
+                <form class="form-group mx-auto my-5 w-75" id="loginForm">
                     <h1>Login</h1>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="alert alert-danger d-none" role="alert" id='logalert'>
+                                    <p>Invalid email/password</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <label class="form-label" for="email">Email Address</label>
                     <input class="form-control" type="email" name="email" id="email" placeholder="Enter Email"/><br/><br/>
     

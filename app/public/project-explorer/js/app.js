@@ -3,7 +3,7 @@ window.onload = function(){
     if(path.includes('register.html')){
         callRegister()
     }
-    if(path.includes('index.html')){
+    if(path.includes('index.html')|| path.includes("viewproject.html") || path.includes("createproject.html") || path.includes("editproject.html") || path.includes("profile.html") || path.includes("search.html")){
         callIndex()
     }
     if(path.includes('login.html')){
@@ -89,6 +89,9 @@ var callRegister = function(){
                 window.location.href = "/project-explorer/index.html"
             } else {
                 let alert = document.querySelector("#alert");
+                while (alert.hasChildNodes()) {  
+                    alert.removeChild(alert.firstChild);
+                }
                 uData.errors.forEach(validationError => {
                     let errorEl = document.createElement("p");
                     errorEl.textContent = validationError;
@@ -125,19 +128,25 @@ var callRegister = function(){
 }
 
 let cookieValue = ""
-const loggedOutNav = document.querySelector("#logged-out");
-const loggedInNav = document.querySelector("#logged-in");
+const loggedOutNav = document.querySelector("#loggedout");
+const loggedInNav = document.querySelector("#loggedin");
 
 var callIndex = async function(){
-    var emptyCookie = document.cookie.split(';')
-    emptyCookie.filter(item => 
-        {if (item.trim().startsWith('uid')){ 
-        cookieValue = item.split('=')[1]}
+    const cookieValue = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('uid='))
+        .split('=')[1];
+    // var emptyCookie = document.cookie.split(';')
+    // emptyCookie.filter(item => 
+    //     {if (item.trim().startsWith('uid')) 
+    //     cookieValue = item.split('=')[1]
     // var cookieValue = document.cookie.split(';').forEach(item => item.trim().split('=')[1])
-    })
+    //})
     if (cookieValue !== ""){
-        let response = await fetch("/api/users/${cookieValue}")
+        let response = await fetch(`/api/users/${cookieValue}`)
+        console.log(response)
         return response.json()
+
     }
     
     
@@ -156,7 +165,96 @@ callIndex().then(data=> {
 
     logOutEl.addEventListener("click", (e) => {
         e.preventDefault()
+
         document.cookie = `uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
         location.replace("index.html");
     })
 }).catch(err => console.log(err.message))
+
+
+let login = document.querySelector("#loginForm")
+
+var callLoginHtml = function(){
+    // the  login button
+    login.addEventListener('submit', function(e){
+        e.preventDefault();
+        
+        let loginData = {
+            email: login.email.value,
+            password: login.password.value,
+        }
+        
+        let asyncPost = async function(){
+            const response = await fetch("/api/login", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(loginData)
+            })
+            return response.json()
+        }
+        asyncPost().then(uData => {
+            if (uData.status === 'ok') {
+                let key = "uid";
+                let cookieAge = 60 * 60 * 24 * 7;
+                let value = encodeURIComponent(uData.data.id);
+                document.cookie = `${key}=${value}; max-age=${cookieAge}; path=/;`;
+                window.location.href = "/project-explorer/index.html"
+            } else {
+                let loginalert = document.querySelector("#logalert");
+                loginalert.classList.remove("d-none")
+            }
+        }).catch(err => console.log(err))
+    })
+}
+
+var createProject = function(){
+    
+    let buttonEl = document.querySelector('#contBtn')
+    let projectForm = document.querySelector('#createProjectForm')
+
+    projectForm.addEventListener("submit", function(e){
+        e.preventDefault()
+
+        let projectData = {
+            name: projectForm.name.value,
+            abstract: projectForm.abstract.value,
+            authors: projectForm.authors.value,
+            tags: projectForm.tags.value,
+           
+        }
+
+        let asyncProject = async function(){
+            const response = await fetch("/api/projects", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(projectData)
+            })
+            return response.json()
+        }
+        asyncPost().then(uData => {
+            if (uData.status === 'ok') {
+                // let key = "uid";
+                // let cookieAge = 60 * 60 * 24 * 7;
+                // let value = encodeURIComponent(uData.data.id);
+                // document.cookie = `${key}=${value}; max-age=${cookieAge}; path=/;`;
+                window.location.href = "/project-explorer/index.html"
+            } else {
+                let projalert = document.querySelector("#projectAlert");
+                while (projalert.hasChildNodes()) {  
+                    projalert.removeChild(alert.firstChild);
+                }
+                uData.errors.forEach(validationError => {
+                    let errorEl = document.createElement("p");
+                    errorEl.textContent = validationError;
+                    projalert.append(errorEl);
+                    projalert.classList.remove("d-none")
+                })
+            }
+        }).catch(err => console.log(err))
+    })
+    
+}
