@@ -33,6 +33,21 @@
                 </div>
             
             </nav>
+
+            <nav class="navbar bg-primary my-2 my-lg-0 px-2 px-lg-4 d-none" id="logged-in">
+                
+                <form class="form-inline" name="searchForm">
+                    <a class="navbar-brand" href="#">Project Explorer</a>
+                    <input type="search" placeholder="Search Projects" class="form-control mr-sm-2">
+                    <button type="submit" class="btn btn-outline-light mr-sm-2">Search</button>
+                    <a href="#">Submit</a>
+                </form>
+                <div>
+                    <a href="index.html" id="logout">Logout</a>
+                    <span id="username"></span>
+                </div>
+            
+            </nav>
             
         </header>
         
@@ -113,6 +128,7 @@
         <footer class="container mt-5 bg-light d-flex justify-content-end">
             <p><span class="text-muted">Project Explorer &copy; 2020 . </span>Edconnect</p>
         </footer>
+        <script src="js/app.js"></script>
     </body>
 </html>
 

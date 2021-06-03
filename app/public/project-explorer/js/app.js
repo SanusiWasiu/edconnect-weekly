@@ -123,3 +123,40 @@ var callRegister = function(){
 
     })
 }
+
+let cookieValue = ""
+const loggedOutNav = document.querySelector("#logged-out");
+const loggedInNav = document.querySelector("#logged-in");
+
+var callIndex = async function(){
+    var emptyCookie = document.cookie.split(';')
+    emptyCookie.filter(item => 
+        {if (item.trim().startsWith('uid')){ 
+        cookieValue = item.split('=')[1]}
+    // var cookieValue = document.cookie.split(';').forEach(item => item.trim().split('=')[1])
+    })
+    if (cookieValue !== ""){
+        let response = await fetch("/api/users/${cookieValue}")
+        return response.json()
+    }
+    
+    
+}
+callIndex().then(data=> {
+    const usernameEl = document.querySelector("#username");
+    const logOutEl = document.querySelector("#logout");
+
+    const navLoggedIn = () => {
+        usernameEl.innerHTML = `Hi, ${data.firstname}`;
+        loggedOutNav.classList.add("d-none");
+        loggedInNav.classList.remove("d-none");
+    }
+    navLoggedIn()
+
+
+    logOutEl.addEventListener("click", (e) => {
+        e.preventDefault()
+        document.cookie = `uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        location.replace("index.html");
+    })
+}).catch(err => console.log(err.message))

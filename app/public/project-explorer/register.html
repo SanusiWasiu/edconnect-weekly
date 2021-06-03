@@ -29,20 +29,33 @@
                 </div>
             
             </nav>
+
+            <nav class="navbar bg-primary my-2 my-lg-0 px-2 px-lg-4 d-none" id="logged-in">
+                
+                <form class="form-inline" name="searchForm">
+                    <a class="navbar-brand" href="#">Project Explorer</a>
+                    <input type="search" placeholder="Search Projects" class="form-control mr-sm-2">
+                    <button type="submit" class="btn btn-outline-light mr-sm-2">Search</button>
+                    <a href="#">Submit</a>
+                </form>
+                <div>
+                    <a href="index.html" id="logout">Logout</a>
+                    <span id="username"></span>
+                </div>
+            
+            </nav>
             
         </header>
         
         <main role="main">
             <div class="container">
-                <form class="form-group mx-auto my-5 w-75" id="signupForm">
+                <form class="form-group mx-auto my-5 w-75" id="signupForm" autocomplete="on">
                     <h1>Signup</h1>
 
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <div class="alert alert-danger d-none" role="alert" id='alert'>
-
-                                </div>
+                                <div class="alert alert-danger d-none" role="alert" id='alert'></div>
                             </div>
                         </div>
                     </div>
@@ -53,7 +66,7 @@
                             <label class="form-label" for="firstName">First name</label>
                             <input class="form-control" type="text" name="firstName" id="firstName" placeholder="First name"/><br/><br/>
                             <label class="form-label" for="email">Email Address</label>
-                            <input class="form-control" type="email" name="email" id="email" placeholder="Your Email address"/><br/><br/>
+                            <input class="form-control" type="email" name="email" id="email" placeholder="Your Email address" autocomplete="username"/><br/><br/>
                             <label class="form-label" for="program">Program</label>
                             <select class="form-control" name="program" id="Program">
                                 <option selected disabled hidden>Choose....</option>
@@ -67,7 +80,7 @@
                             <label class="form-label" for="lastName">Last name</label>
                             <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Last name"/><br/><br/>
                             <label class="form-label" for="password">Password</label>
-                            <input class="form-control" type="password" id="password" name="password" placeholder="Your Password"/><br/><br/>
+                            <input class="form-control" type="password" id="password" name="password" placeholder="Your Password" autocomplete="current-password"/><br/><br/>
     
                             <div class="row">
                                 <div class="col">
