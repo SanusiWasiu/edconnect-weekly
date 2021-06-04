@@ -220,8 +220,8 @@ var createProject = function(){
         let projectData = {
             name: projectForm.name.value,
             abstract: projectForm.abstract.value,
-            authors: projectForm.authors.value,
-            tags: projectForm.tags.value,
+            authors: projectForm.authors.value.trim().split(','),
+            tags: projectForm.tags.value.trim().split(','),
            
         }
 
@@ -235,7 +235,7 @@ var createProject = function(){
             })
             return response.json()
         }
-        asyncPost().then(uData => {
+        asyncProject().then(uData => {
             if (uData.status === 'ok') {
                 // let key = "uid";
                 // let cookieAge = 60 * 60 * 24 * 7;
