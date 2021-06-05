@@ -11,6 +11,7 @@ window.onload = function(){
     }
     if(path.includes('createproject.html')){
         createProject()
+        restrProjLogInUser()
     }
     if(path.includes('viewproject.html')){
         viewProject()
@@ -258,3 +259,19 @@ var createProject = function(){
     })
     
 }
+
+//step 8
+let restrProjLogInUser = () => {
+    let cookie = document.cookie.split(';').filter(item => item.trim().startsWith("uid"));
+    if(cookie.length > 0){ // If a cookie still exists 
+        let cookieName = cookie[0].trim().split('=')[1];
+        if(cookieName == ''){
+            window.location.href = "/project-explorer/login.html"; // Redirect to login.html
+            
+        }
+    }else{
+        window.location.href = "/project-explorer/login.html"; // Redirect to login.html
+    }
+}
+
+// step 9
