@@ -6,6 +6,9 @@ window.onload = function(){
     if(path.includes('index.html')|| path.includes("viewproject.html") || path.includes("createproject.html") || path.includes("editproject.html") || path.includes("profile.html") || path.includes("search.html")){
         callIndex()
     }
+    if(path.includes('index.html')){
+        updateProjectList()
+    }
     if(path.includes('login.html')){
         callLoginHtml ()
     }
@@ -14,7 +17,7 @@ window.onload = function(){
         restrProjLogInUser()
     }
     if(path.includes('viewproject.html')){
-        viewProject()
+        updateViewProject()
     }
 }
 
@@ -275,3 +278,87 @@ let restrProjLogInUser = () => {
 }
 
 // step 9
+let updateProjectList = function(){
+    let showcase = document.querySelector('.showcase');
+
+    let asyncProjectList = async function(){
+        const response = await fetch('/api/projects', {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+            mode: 'cors',
+            cache: 'default',
+        })
+        if (response.status === 200){
+            return response.json()
+        }else{
+            throw new Error ("something went wrong")
+        }
+    }
+    asyncProjectList().then(data => {
+        data.forEach((item, index) => {
+            if(index <= 3){
+                showcase.innerHTML +=    
+
+                `<div class="col">
+                    <div class="card my-2 py-4 px-2 box">
+                        <div class="card-body">
+                            <h5 class="card-title px-2 text-primary"><a href="viewproject.html?id=${item.id}">${item.name}</a></h5>
+                            <h6 class="card-subtitle my-lg-0 px-2 text-secondary">${item.authors.join(', ')}</h6>
+                            <p class="card-text my-lg-0 py-2 px-2">${item.abstract}</p>
+                        </div>
+                        
+                        <div class="card-bottom d-flex justify-content-center align-items-center">
+                            <small class="text-primary">${item.tags.join(' ')}</small>
+                        </div>
+                    </div>
+                </div>`
+        
+            }
+        });
+    }).catch(error => console.log(error.message))
+    
+}
+
+//step 10
+let updateViewProject = function(){
+
+    let searchParams = new URLSearchParams(document.location.search.substring(1));
+    let projectId = searchParams.get("id");
+
+    let asyncViewProj = async function(){
+        const response = await fetch(`/api/projects/${projectId}`)
+        if (response.status === 200){
+            return response.json()
+        }else{
+            throw new Error ("something went wrong")
+        }
+    }
+    asyncViewProj().then(data => {
+        let projectName = document.querySelector('#project_name')
+        projectName.innerHTML = `<h2>${data.name.toUpperCase()}<h2>`
+
+        let projectAbstract = document.querySelector('#project_abstract')
+        projectAbstract.innerHTML = `<p>${data.abstract}<p>`
+
+        let projectAuthors = document.querySelector('#project_authors')
+        data.authors.forEach((author, index) =>{
+            if(index == data.authors.length - 1){
+                projectAuthors.innerHTML += `<div>${author}</div>`;
+            }else{
+                projectAuthors.innerHTML += `<div>${author}</div><hr/>`;
+            }
+        })
+
+        let projectTags = document.querySelector('#project_tags')
+        projectTags.innerHTML = data.tags.join(' ');
+    })
+
+    let author = document.querySelector('#project_author')
+    let asyncCreatedBy = async function(){
+        let response = await fetch(`/api/users/${data.createdBy}`)
+        return response.json()
+    }
+    asyncCreatedBy().then(data =>{
+        author.innerHTML = `${data.firstname} ${data.lastname}`;
+    }) 
+}
