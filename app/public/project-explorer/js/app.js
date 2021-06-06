@@ -334,31 +334,38 @@ let updateViewProject = function(){
         }
     }
     asyncViewProj().then(data => {
-        let projectName = document.querySelector('#project_name')
-        projectName.innerHTML = `<h2>${data.name.toUpperCase()}<h2>`
+        let projectName = document.querySelector('#project_name');
+        projectName.innerHTML = `<h2>${data.name.toUpperCase()}<h2>`;
 
-        let projectAbstract = document.querySelector('#project_abstract')
-        projectAbstract.innerHTML = `<p>${data.abstract}<p>`
+        let projectAbstract = document.querySelector('#project_abstract');
+        projectAbstract.innerHTML = `<p>${data.abstract}<p>`;
 
-        let projectAuthors = document.querySelector('#project_authors')
+        let projectAuthors = document.querySelector('#project_authors');
         data.authors.forEach((author, index) =>{
             if(index == data.authors.length - 1){
                 projectAuthors.innerHTML += `<div>${author}</div>`;
             }else{
                 projectAuthors.innerHTML += `<div>${author}</div><hr/>`;
             }
-        })
+        });
 
-        let projectTags = document.querySelector('#project_tags')
+        let projectTags = document.querySelector('#project_tags');
         projectTags.innerHTML = data.tags.join(' ');
-    })
 
-    let author = document.querySelector('#project_author')
-    let asyncCreatedBy = async function(){
-        let response = await fetch(`/api/users/${data.createdBy}`)
-        return response.json()
-    }
-    asyncCreatedBy().then(data =>{
-        author.innerHTML = `${data.firstname} ${data.lastname}`;
-    }) 
+        let createdById = data.createdBy
+        fetch(`/api/users/${createdById}`)
+            .then(response =>{
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    throw new Error(`Response.status != 200 but: ${response.status}`)
+                }
+            })
+            .then(idData =>{
+                console.log(idData)
+                let author = document.querySelector('#project_author')
+                author.textContent = `${idData.firstname} ${idData.lastname}`;
+            }).catch(error => console.log(error.message))
+    }).catch(error => console.log(error.message))
+
 }
