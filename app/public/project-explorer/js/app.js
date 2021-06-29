@@ -140,12 +140,7 @@ var callIndex = async function(){
         .split('; ')
         .find(row => row.startsWith('uid='))
         .split('=')[1];
-    // var emptyCookie = document.cookie.split(';')
-    // emptyCookie.filter(item => 
-    //     {if (item.trim().startsWith('uid')) 
-    //     cookieValue = item.split('=')[1]
-    // var cookieValue = document.cookie.split(';').forEach(item => item.trim().split('=')[1])
-    //})
+
     if (cookieValue !== ""){
         let response = await fetch(`/api/users/${cookieValue}`)
         console.log(response)
