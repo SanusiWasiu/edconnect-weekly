@@ -9,35 +9,45 @@ const Header = () => {
     let history = useHistory()
 
     useEffect(()=>{
-        var callIndex = async function () {
-            setcookieValue(document.cookie
-                .split('; ')
-                .find(row => row.startsWith('uid='))
-                .split('=')[1]);
-    
-            if (cookieValue !== "") {
-                let response = await fetch(`/api/users/${cookieValue}`)
-                console.log(response)
-                return response.json()
-    
-            }
+        document.cookie
+            .split('; ')
+            .find(row => {
+                if (row.startsWith('uid=')) {
+                    setcookieValue(row.split('=')[1]);
+                }
+            })
+
+
+
+
+        if (cookieValue !== "") {
+            fetch(`/api/users/${cookieValue}`)
+                .then(response => {
+                    console.log(response)
+                    return response.json()
+                }).then(data => {
+                    console.log(data)
+                    setuserStatus(`Hi, ${data.firstname}`);
+                    setlogStatus('Logout');
+                }).catch(err => console.log(err.message))
         }
-        callIndex().then(data => {
-            setuserStatus(`Hi, ${data.firstname}`);
-            setlogStatus('Logout');
-    
-        }).catch(err => console.log(err.message))
     })
     
     const HandleLogout = event => {
         event.preventDefault();
         if (logStatus === 'Logout'){
-            document.cookie = `uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
-            history.push("index.html");
+            document.cookie = 'uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+            history.push("/");
         }
         history.push('/Signup');
     }
     
+    const HandleLogin = event => {
+        event.preventDefault();
+        if (userStatus === 'Login'){
+            history.push("/Login");
+        }
+    }
     return (
 
         <Navbar className="bg-primary justify-content-between my-2 my-lg-0 px-2 px-lg-4">
@@ -53,8 +63,8 @@ const Header = () => {
             </Nav>
 
             <Nav>
-                <NavbarBrand href="register.html" className="text-light" onClick={HandleLogout} >{ logStatus }</NavbarBrand>
-                <NavbarBrand href="login.html" className="text-light">{ userStatus }</NavbarBrand>
+                <NavbarBrand href='#' className="text-light" onClick={HandleLogout} >{ logStatus }</NavbarBrand>
+                <NavbarBrand href='#' className="text-light" onClick={HandleLogin} >{ userStatus }</NavbarBrand>
             </Nav>
         </Navbar>
     )

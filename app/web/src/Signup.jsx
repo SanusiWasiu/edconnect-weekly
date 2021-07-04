@@ -38,7 +38,7 @@ const Signup = () => {
                 setmatricNumber(value)
                 break;
             case 'graduationYear':
-                setgraduationYear(value)
+                setgraduationYear(value);
         }
     }
 
@@ -107,7 +107,7 @@ const Signup = () => {
                     let value = encodeURIComponent(uData.data.id);
                     document.cookie = `${key}=${value}; max-age=${cookieAge}; path=/;`;
                     //window.location.href = "/project-explorer/index.html"
-                    history.push("/Login")
+                    history.push("/Home")
                     setvalidationError([])
                 } else {
                     setvalidationError(uData.errors)
@@ -123,11 +123,11 @@ const Signup = () => {
                 <Form class="mx-auto my-5 w-75" id="signupForm" autocomplete="on" onSubmit={HandleSubmit}>
                     <h1>Signup</h1>
 
-                    {(validationError !== []) ? 
+                    {(validationError.length > 0) ? 
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <div class="alert alert-danger d-none" role="alert" id='alert'>
+                                <div class="alert alert-danger" role="alert" id='alert'>
                                     {validationError.map((Error) => (
                                         <p>{Error}</p>
                                     ))}
