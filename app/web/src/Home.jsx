@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { Container, Jumbotron } from 'react-bootstrap'
+import React, { useState, useEffect } from 'react';
+import { Container, Jumbotron } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Layout from './shared/Layout'
+import Layout from './shared/Layout';
 
 const Home = () => {
     const [Projects, setProjects] = useState([]);

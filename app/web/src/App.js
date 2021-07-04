@@ -1,7 +1,7 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Switch,  } from 'react-router-dom'
-import Home from './Home'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch,  } from 'react-router-dom';
+import Home from './Home';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Signup from './Signup';
 import Login from './Login';
 import CreateProject from './CreateProject';

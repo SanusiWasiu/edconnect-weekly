@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Form, FormControl, Nav, Navbar, NavbarBrand } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react';
+import { Button, Form, FormControl, Nav, Navbar, NavbarBrand } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 
 const Header = () => {

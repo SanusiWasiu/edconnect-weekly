@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router'
-import { Container, FormControl, Button, Col, Form, FormGroup, FormLabel, Row} from 'react-bootstrap'
-import Layout from './shared/Layout'
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
+import { Container, FormControl, Button, Col, Form, FormGroup, FormLabel, Row} from 'react-bootstrap';
+import Layout from './shared/Layout';
 
 const CreateProject = () => {
     
