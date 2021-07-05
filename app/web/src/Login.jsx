@@ -16,7 +16,7 @@ const Login = () => {
             case 'passwords':
                 setpassword(value);
                 break;
-            case 'emails':
+            case 'email':
                 setemail(value);
                 break;
             default:
@@ -76,10 +76,10 @@ const Login = () => {
                     </Container>) : null}
 
                     <FormLabel>Email Address</FormLabel>
-                    <FormControl type="email" name="emails" id="email" placeholder="Enter Email" value={email} onChange={handleInputChange} /><br/><br/>
+                    <FormControl type="email" name="email" placeholder="Enter Email" value={email} onChange={handleInputChange} /><br/><br/>
     
                     <FormLabel>Password</FormLabel>
-                    <FormControl type="password" name="passwords" id="password" placeholder="Password" value={password} onChange={handleInputChange} /><br/><br/>
+                    <FormControl type="password" name="passwords" placeholder="Password" value={password} onChange={handleInputChange} /><br/><br/>
     
                     <Button type="submit" class="btn btn-primary">Login</Button>                
                 </Form>
