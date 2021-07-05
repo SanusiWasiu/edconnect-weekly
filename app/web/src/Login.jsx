@@ -13,7 +13,7 @@ const Login = () => {
     const handleInputChange = event => {
         const {name, value} = event.target;
         switch(name){
-            case 'passwords':
+            case 'password':
                 setpassword(value);
                 break;
             case 'email':
@@ -79,7 +79,7 @@ const Login = () => {
                     <FormControl type="email" name="email" placeholder="Enter Email" value={email} onChange={handleInputChange} /><br/><br/>
     
                     <FormLabel>Password</FormLabel>
-                    <FormControl type="password" name="passwords" placeholder="Password" value={password} onChange={handleInputChange} /><br/><br/>
+                    <FormControl type="password" name="password" placeholder="Password" value={password} onChange={handleInputChange} /><br/><br/>
     
                     <Button type="submit" class="btn btn-primary">Login</Button>                
                 </Form>
