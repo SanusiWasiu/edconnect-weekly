@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Container, Row, Col, FormControl, FormGroup, FormLabel, Button, Form} from 'react-bootstrap';
+import { Container, Row, Col, FormControl, FormLabel, Button, Form} from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import Layout from './shared/Layout';
 
@@ -18,6 +18,8 @@ const Login = () => {
                 break;
             case 'emails':
                 setemail(value);
+                break;
+            default:
         }
     }
 

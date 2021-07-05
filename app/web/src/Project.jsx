@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Container} from 'react-bootstrap';
+import { Container, Form, Row, Col, FormLabel} from 'react-bootstrap';
 //import { useHistory } from 'react-router';
 import Layout from './shared/Layout'
 import { useParams } from "react-router";
@@ -50,7 +50,7 @@ const Project = () => {
         }).catch(error => console.log(error.message))
     
     
-    }, [])
+    })
 
     return (
         <Layout>
@@ -77,30 +77,30 @@ const Project = () => {
 
             <Container>
                 
-                <form class="form-group">
+                <Form class="form-group">
                     
-                    <div class="row justify-content-between">
+                    <Row class="justify-content-between">
                     
-                        <div class="col">
+                        <Col>
                             <h6>Project Abstract</h6>
                             <p id="project_abstract">
                                 {projectAbstract}
                             </p>
 
-                            <label class="form-label" for="abstract">Comments</label>
+                            <FormLabel>Comments</FormLabel>
                             <textarea class="form-control" id="abstract" rows="8" type="textarea" name="abstract" placeholder="Leave a comment"></textarea><br/><br/>
                             
-                        </div>
+                        </Col>
 
-                        <div class="col">
+                        <Col>
                             <h6>Project details</h6>
                             <div class="card mb-5">
                                 <div class="card-header">
                                     <h5>Author(s)</h5>
                                 </div>
                                 <div class="card-body" id="project_authors">
-                                    {projectAuthors.map((author) => {
-                                        <div><p class="card-text">{ author }</p></div>
+                                    {projectAuthors.map(author => {
+                                        <div><p class="card-text">{author}</p></div>
                                     })}
                                 </div>
                                 <div class="card-footer" id="project_tags">
@@ -118,10 +118,10 @@ const Project = () => {
                                 
                             </div>
                             
-                        </div>
-                    </div>
+                        </Col>
+                    </Row>
                     <button type="submit" class="btn btn-primary">Save</button>
-                </form>
+                </Form>
             </Container>
         </Layout>
     )

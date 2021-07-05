@@ -40,6 +40,8 @@ const Signup = () => {
                 break;
             case 'graduationYear':
                 setgraduationYear(value);
+                break;
+            default:
         }
     }
 

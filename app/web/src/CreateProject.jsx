@@ -28,6 +28,8 @@ const CreateProject = () => {
                 break;
             case 'tags':
                 setTags(value);
+                break;
+            default:
         }
     }
 
@@ -76,7 +78,7 @@ const CreateProject = () => {
     let cookie = document.cookie.split(';').filter(item => item.trim().startsWith("uid"));
     if (cookie.length > 0) { // If a cookie still exists 
         let cookieName = cookie[0].trim().split('=')[1];
-        if (cookieName == '') {
+        if (cookieName === '') {
             //window.location.href = "/project-explorer/login.html"; // Redirect to login.html
             history.push('/Login')
 
