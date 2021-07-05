@@ -100,7 +100,7 @@ const Project = () => {
                                 </div>
                                 <div class="card-body" id="project_authors">
                                     {projectAuthors.map(author => {
-                                        <div><p class="card-text">{author}</p></div>
+                                        return(<div><p class="card-text">{author}</p></div>)
                                     })}
                                 </div>
                                 <div class="card-footer" id="project_tags">

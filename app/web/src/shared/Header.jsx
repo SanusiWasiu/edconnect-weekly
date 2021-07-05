@@ -15,7 +15,9 @@ const Header = () => {
             .find(row => {
                 if (row.startsWith('uid=')) {
                     setcookieValue(row.split('=')[1]);
+                    
                 }
+                return null;
             })
 
 

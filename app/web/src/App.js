@@ -6,7 +6,6 @@ import Signup from './Signup';
 import Login from './Login';
 import CreateProject from './CreateProject';
 import Project from './Project';
-import './App.css';
 import Layout from './shared/Layout'
 
 function App() {
