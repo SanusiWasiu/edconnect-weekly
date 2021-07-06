@@ -24,7 +24,7 @@ const Login = () => {
     }
 
     const HandleSubmit = event =>{
-        event.preventDefaualt();
+        event.preventDefault();
         
         useEffect(()=> {
             let postData = {
