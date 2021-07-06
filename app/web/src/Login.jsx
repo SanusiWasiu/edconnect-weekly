@@ -55,7 +55,7 @@ const Login = () => {
                     setvalidationError(true)
                 }
             }).catch(err => console.log(err))
-        }, [])
+        })
     }
 
     return (
