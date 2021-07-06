@@ -12,8 +12,8 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact={true} path={['/', '/Home']} component={Home} />
-        {/* <Route path='/Home' component={Home} /> */}
+        <Route exact={true} path='/' component={Home} />
+        <Route exact={true} path='/Home' component={Home} />
         <Route path='/signup' component={Signup} />
         <Route path= '/login' component={Login} />
         <Route exact={true} path='/projects/submit' component={CreateProject} />
