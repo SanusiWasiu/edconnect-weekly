@@ -22,39 +22,39 @@ const Login = () => {
         }
     }
 
-    const HandleSubmit = event =>{
+    const HandleSubmit = event => {
         event.preventDefault();
-        
-        useEffect(()=> {
-            let postData = {
-                Email: email,
-                Password: password,
+
+
+        let postData = {
+            Email: email,
+            Password: password,
+        }
+
+        let asyncPost = async function () {
+            const response = await fetch("/api/login", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(postData)
+            })
+            return response.json()
+        }
+        asyncPost().then(uData => {
+            if (uData.status === 'ok') {
+                let key = "uid";
+                let cookieAge = 60 * 60 * 24 * 7;
+                let value = encodeURIComponent(uData.data.id);
+                document.cookie = `${key}=${value}; max-age=${cookieAge}; path=/;`;
+                //window.location.href = "/project-explorer/index.html"
+                history.push("/Home")
+
+            } else {
+                setvalidationError(true)
             }
-            
-            let asyncPost = async function(){
-                const response = await fetch("/api/login", {
-                    method: 'POST',
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(postData)
-                })
-                return response.json()
-            }
-            asyncPost().then(uData => {
-                if (uData.status === 'ok') {
-                    let key = "uid";
-                    let cookieAge = 60 * 60 * 24 * 7;
-                    let value = encodeURIComponent(uData.data.id);
-                    document.cookie = `${key}=${value}; max-age=${cookieAge}; path=/;`;
-                    //window.location.href = "/project-explorer/index.html"
-                    history.push("/Home")
-                    
-                } else {
-                    setvalidationError(true)
-                }
-            }).catch(err => console.log(err))
-        })
+        }).catch(err => console.log(err))
+
     }
 
     return (

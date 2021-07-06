@@ -35,44 +35,41 @@ const CreateProject = () => {
 
     const HandleSubmit = event => {
         event.preventDefault()
-        
-        useEffect(() => {
-            let postData = {
-                projectname: ProjectName,
-                abstract: Abstract,
-                authors: Authors,
-                tags: Tags
-            }
 
-            let asyncPost = async function () {
-                const response = await fetch("/api/register", {
-                    method: 'POST',
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(postData)
-                })
-                return response.json()
-            }
-            asyncPost().then(uData => {
-                if (uData.status === 200) {
-                    // let key = "uid";
-                    // let cookieAge = 60 * 60 * 24 * 7;
-                    // let value = encodeURIComponent(uData.data.id);
-                    // document.cookie = `${key}=${value}; max-age=${cookieAge}; path=/;`;
-                    //window.location.href = "/project-explorer/index.html"
-                    history.push("/Home")
 
-                } else {
-                    if (validationError !== []) {
-                        setvalidationError([])
-                    }
-                    setvalidationError(uData.errors)
+        let postData = {
+            projectname: ProjectName,
+            abstract: Abstract,
+            authors: Authors,
+            tags: Tags
+        }
+
+        let asyncPost = async function () {
+            const response = await fetch("/api/register", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(postData)
+            })
+            return response.json()
+        }
+        asyncPost().then(uData => {
+            if (uData.status === 200) {
+                // let key = "uid";
+                // let cookieAge = 60 * 60 * 24 * 7;
+                // let value = encodeURIComponent(uData.data.id);
+                // document.cookie = `${key}=${value}; max-age=${cookieAge}; path=/;`;
+                //window.location.href = "/project-explorer/index.html"
+                history.push("/Home")
+
+            } else {
+                if (validationError !== []) {
+                    setvalidationError([])
                 }
-            }).catch(err => console.log(err))
-        }, [])
-
-
+                setvalidationError(uData.errors)
+            }
+        }).catch(err => console.log(err))
     }
 
     let cookie = document.cookie.split(';').filter(item => item.trim().startsWith("uid"));
