@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, FormControl, FormLabel, Button, Form} from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import Layout from './shared/Layout';
