@@ -80,7 +80,7 @@ const Signup = () => {
     }, [])
 
     const HandleSubmit = event =>{
-        event.preventDefaualt();
+        event.preventDefault();
         
         useEffect(()=> {
             let postData = {

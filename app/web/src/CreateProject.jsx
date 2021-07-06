@@ -34,7 +34,7 @@ const CreateProject = () => {
     }
 
     const HandleSubmit = event => {
-        event.preventDefaualt()
+        event.preventDefault()
         
         useEffect(() => {
             let postData = {
