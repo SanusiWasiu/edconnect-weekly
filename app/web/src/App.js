@@ -12,12 +12,14 @@ function App() {
   return (
     <Router>
       <Switch>
-      <Route path='/' exact={true} component={Home} />
+        <Route path='/' exact={true} component={Home} />
+        <Route path='/home' exact={true} component={Home} />
         <Route path='/signup' component={Signup} />
         <Route path='/login' component={Login} />
         <Route path='/projects/submit' component={CreateProject} />
         <Route path='/projects' component={Project} />
         <Route path='/projects/:id' component={Project} />
+        <Route path="*" render={()=><Layout><div className="text-center p-5"><h1>Oops!!! Page not found</h1></div></Layout> }/>
       </Switch>
     </Router>
   );
