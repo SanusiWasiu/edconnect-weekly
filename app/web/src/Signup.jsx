@@ -80,7 +80,7 @@ const Signup = () => {
     }, [])
 
     const HandleSubmit = event =>{
-        event.preventdefaualt();
+        event.preventDefaualt();
         
         useEffect(()=> {
             let postData = {
@@ -123,14 +123,14 @@ const Signup = () => {
     return (
         <Layout>
             <Container>
-                <Form class="mx-auto my-5 w-75" id="signupForm" autocomplete="on" onSubmit={HandleSubmit}>
+                <Form className="mx-auto my-5 w-75" id="signupForm" autocomplete="on" onSubmit={HandleSubmit}>
                     <h1>Signup</h1>
 
                     {(validationError.length > 0) ? 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="alert alert-danger" role="alert" id='alert'>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <div className="alert alert-danger" role="alert" id='alert'>
                                     {validationError.map((Error) => (
                                         <p>{Error}</p>
                                     ))}
@@ -139,7 +139,7 @@ const Signup = () => {
                         </div>
                     </div> : null}
 
-                    <Row class="justify-content-between">
+                    <Row className="justify-content-between">
                     
                         <FormGroup as={Col}>
                             <FormLabel>First name</FormLabel>
@@ -180,7 +180,7 @@ const Signup = () => {
                             
                         </FormGroup>
                     </Row>
-                    <Button type="submit" class="btn btn-primary">Sign Up</Button>
+                    <Button type="submit" className="btn btn-primary">Sign Up</Button>
                 </Form>
                 
             </Container>

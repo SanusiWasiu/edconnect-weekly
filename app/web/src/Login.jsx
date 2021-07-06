@@ -24,7 +24,7 @@ const Login = () => {
     }
 
     const HandleSubmit = event =>{
-        event.preventdefaualt();
+        event.preventDefaualt();
         
         useEffect(()=> {
             let postData = {
@@ -61,14 +61,14 @@ const Login = () => {
     return (
         <Layout>
             <Container>
-                <Form class="form-group mx-auto my-5 w-75" id="loginForm" onSubmit={HandleSubmit}>
+                <Form className="form-group mx-auto my-5 w-75" id="loginForm" onSubmit={HandleSubmit}>
                     <h1>Login</h1>
 
                     {validationError? 
                     (<Container>
                         <Row>
                             <Col>
-                                <div class="alert alert-danger" role="alert" id='logalert'>
+                                <div className="alert alert-danger" role="alert" id='logalert'>
                                     <p>Invalid email/password</p>
                                 </div>
                             </Col>
@@ -81,7 +81,7 @@ const Login = () => {
                     <FormLabel>Password</FormLabel>
                     <FormControl type="password" name="password" placeholder="Password" value={password} onChange={handleInputChange} /><br/><br/>
     
-                    <Button type="submit" class="btn btn-primary">Login</Button>                
+                    <Button type="submit" className="btn btn-primary">Login</Button>                
                 </Form>
             </Container>
         </Layout>

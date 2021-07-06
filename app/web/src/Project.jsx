@@ -54,32 +54,32 @@ const Project = () => {
 
     return (
         <Layout>
-            <Container class="my-4">
+            <Container className="my-4">
                 <h2 id="project_name"> {projectname} </h2>
-                <div class="row">
-                    <div class="col">
+                <div className="row">
+                    <div className="col">
                         <p>Created By</p>
                         <p id="project_author"> {authorname} </p>
                     </div>
-                    <div class="col">
+                    <div className="col">
                         <p>Date Created</p>
                         <p>2020-08-30</p>
                     </div>
-                    <div class="col">
+                    <div className="col">
                         <p>Last Updated</p>
                         <p>2020-08-30</p>
                     </div>
-                    <div class="col d-flex justify-content-end align-items-right py-4">
-                        <a href="editproject.html" class="btn btn-primary">Edit Project</a>
+                    <div className="col d-flex justify-content-end align-items-right py-4">
+                        <a href="editproject.html" className="btn btn-primary">Edit Project</a>
                     </div>
                 </div>
             </Container>
 
             <Container>
                 
-                <Form class="form-group">
+                <Form className="form-group">
                     
-                    <Row class="justify-content-between">
+                    <Row className="justify-content-between">
                     
                         <Col>
                             <h6>Project Abstract</h6>
@@ -88,39 +88,39 @@ const Project = () => {
                             </p>
 
                             <FormLabel>Comments</FormLabel>
-                            <textarea class="form-control" id="abstract" rows="8" type="textarea" name="abstract" placeholder="Leave a comment"></textarea><br/><br/>
+                            <textarea className="form-control" id="abstract" rows="8" type="textarea" name="abstract" placeholder="Leave a comment"></textarea><br/><br/>
                             
                         </Col>
 
                         <Col>
                             <h6>Project details</h6>
-                            <div class="card mb-5">
-                                <div class="card-header">
+                            <div className="card mb-5">
+                                <div className="card-header">
                                     <h5>Author(s)</h5>
                                 </div>
-                                <div class="card-body" id="project_authors">
+                                <div className="card-body" id="project_authors">
                                     {projectAuthors.map(author => {
-                                        return(<div><p class="card-text">{author}</p></div>)
+                                        return(<div><p className="card-text">{author}</p></div>)
                                     })}
                                 </div>
-                                <div class="card-footer" id="project_tags">
-                                    <p class="card-text text-primary"> {projectTags} </p>
+                                <div className="card-footer" id="project_tags">
+                                    <p className="card-text text-primary"> {projectTags} </p>
                                 </div>
                             </div>
 
-                            <div class="card">
-                                <div class="card-header">
+                            <div className="card">
+                                <div className="card-header">
                                     <h5>Project Files</h5>
                                 </div>
-                                <div class="card-body">
-                                    <p class="card-text text-center text-muted">No files uploaded yet</p>
+                                <div className="card-body">
+                                    <p className="card-text text-center text-muted">No files uploaded yet</p>
                                 </div>
                                 
                             </div>
                             
                         </Col>
                     </Row>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" className="btn btn-primary">Save</button>
                 </Form>
             </Container>
         </Layout>

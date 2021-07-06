@@ -34,7 +34,7 @@ const CreateProject = () => {
     }
 
     const HandleSubmit = event => {
-        event.preventdefaualt()
+        event.preventDefaualt()
         
         useEffect(() => {
             let postData = {
@@ -91,8 +91,8 @@ const CreateProject = () => {
     return (
         <Layout>
             <Container>
-                <Form class="form-group mx-auto my-5 w-75" id="createProjectForm" onSubmit={HandleSubmit}>
-                    <Container class="my-5 mx-auto w-75">
+                <Form className="form-group mx-auto my-5 w-75" id="createProjectForm" onSubmit={HandleSubmit}>
+                    <Container className="my-5 mx-auto w-75">
                         <h1>Submit Project</h1>
 
                         
@@ -101,7 +101,7 @@ const CreateProject = () => {
                                 <Col>
                                     {console.log(validationError)}
                                     {(validationError.length > 0) ?
-                                   (<div class="alert alert-danger" role="alert" id='projectAlert'>
+                                   (<div className="alert alert-danger" role="alert" id='projectAlert'>
                                         {validationError.map((Error) => (
                                             <p>{Error}</p>
                                         ))}
@@ -114,7 +114,7 @@ const CreateProject = () => {
                         <FormControl type="text" name="name" placeholder="Enter project name" value={ProjectName} onChange={handleInputChange} /><br/><br/>
 
                         <FormLabel>Abstract</FormLabel>
-                        <textarea class="form-control" rows="10" type="textarea" name="abstract" value={Abstract} onChange={handleInputChange}></textarea><br/><br/>
+                        <textarea className="form-control" rows="10" type="textarea" name="abstract" value={Abstract} onChange={handleInputChange}></textarea><br/><br/>
 
                         <FormLabel>Author(s)</FormLabel>
                         <FormControl type="text" name="authors" placeholder="Enter author names (seperated by comma)" value={Authors} onChange={handleInputChange} /><br/><br/>
@@ -122,7 +122,7 @@ const CreateProject = () => {
                         <FormLabel>Tags</FormLabel>
                         <FormControl type="text" name="tags" value={Tags} onChange={handleInputChange} placeholder="Use # to tag project with different topics (e.g. #javascript #mongodb)"/><br/><br/>
                         
-                        <Button type="submit" class="btn btn-primary" id="contBtn">Continue</Button>
+                        <Button type="submit" className="btn btn-primary" id="contBtn">Continue</Button>
                     </Container>
                 
                 </Form>    
