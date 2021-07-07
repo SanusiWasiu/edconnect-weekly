@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Jumbotron } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Layout from './shared/Layout';
