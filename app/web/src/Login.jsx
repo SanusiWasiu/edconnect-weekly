@@ -48,7 +48,7 @@ const Login = () => {
                 let value = encodeURIComponent(uData.data.id);
                 document.cookie = `${key}=${value}; max-age=${cookieAge}; path=/;`;
                 //window.location.href = "/project-explorer/index.html"
-                history.push("/Home")
+                history.push("/")
 
             } else {
                 setvalidationError(true)
