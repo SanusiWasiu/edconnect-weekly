@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { Container, FormControl, Button, Col, Form, FormLabel, Row} from 'react-bootstrap';
 import Layout from './shared/Layout';
@@ -65,7 +65,7 @@ const CreateProject = () => {
                 }
                 setvalidationError(uData.errors)
             }
-        }).catch(err => console.log(err))
+        }).catch(err => console.log(err.message))
     }
 
     let cookie = document.cookie.split(';').filter(item => item.trim().startsWith("uid"));
