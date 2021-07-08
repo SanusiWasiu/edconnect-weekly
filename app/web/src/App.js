@@ -16,9 +16,9 @@ function App() {
         <Route path='/home' component={Home} />
         <Route path='/signup' component={Signup} />
         <Route path='/login' component={Login} />
-        <Route path='/submit' component={CreateProject} />
+        <Route exact={true} path="/projects/submit" component={CreateProject}/> 
         <Route path='/projects' component={Project} />
-        <Route path='/projects/:id' component={Project} />
+        <Route exact={true} path="/projects/:id" component={Project}/> 
         <Route path="*" render={()=><Layout><div className="text-center p-5"><h1>Oops!!! Page not found</h1></div></Layout> }/>
       </Switch>
     </Router>
