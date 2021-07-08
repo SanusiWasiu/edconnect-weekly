@@ -61,7 +61,7 @@ const CreateProject = () => {
                 // let value = encodeURIComponent(uData.data.id);
                 // document.cookie = `${key}=${value}; max-age=${cookieAge}; path=/;`;
                 //window.location.href = "/project-explorer/index.html"
-                history.push("/Home")
+                history.push("/")
 
             } else {
                 if (validationError !== []) {
@@ -77,12 +77,12 @@ const CreateProject = () => {
         let cookieName = cookie[0].trim().split('=')[1];
         if (cookieName === '') {
             //window.location.href = "/project-explorer/login.html"; // Redirect to login.html
-            history.push('/Login')
+            history.push('/login')
 
         }
     } else {
         //window.location.href = "/project-explorer/login.html"; // Redirect to login.html
-        history.push('/Login')
+        history.push('/login')
     }
 
     return (

@@ -42,13 +42,13 @@ const Header = () => {
             document.cookie = 'uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
             history.push("/");
         }
-        history.push('/Signup');
+        history.push('/signup');
     }
     
     const HandleLogin = event => {
         event.preventDefault();
         if (userStatus === 'Login'){
-            history.push("/Login");
+            history.push("/login");
         }
     }
     return (
