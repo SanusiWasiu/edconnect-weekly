@@ -40,8 +40,8 @@ const CreateProject = () => {
         let postData = {
             projectname: ProjectName,
             abstract: Abstract,
-            authors: Authors,
-            tags: Tags
+            authors: Authors.split(","),
+            tags: Tags.split(",")
         }
 
         let asyncPost = async function () {
