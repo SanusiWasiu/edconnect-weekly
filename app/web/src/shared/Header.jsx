@@ -63,7 +63,7 @@ const Header = () => {
                 <Button type="submit" variant="outline-light" class="mx-sm-2">Search</Button>
 
                 <Nav.Link href="/projects" className="text-light">Project</Nav.Link>
-                <NavbarBrand href="/project/submit" className="text-light mx-sm-2">Submit</NavbarBrand>
+                <NavbarBrand href="/projects/submit" className="text-light mx-sm-2">Submit</NavbarBrand>
             </Nav>
 
             <Nav>
