@@ -52,15 +52,11 @@ const CreateProject = () => {
                 },
                 body: JSON.stringify(postData)
             })
-            return response.json()
+            let uData = response.json()
+            return uData
         }
         asyncPost().then(uData => {
             if (uData.status === 200) {
-                // let key = "uid";
-                // let cookieAge = 60 * 60 * 24 * 7;
-                // let value = encodeURIComponent(uData.data.id);
-                // document.cookie = `${key}=${value}; max-age=${cookieAge}; path=/;`;
-                //window.location.href = "/project-explorer/index.html"
                 history.push("/")
 
             } else {
