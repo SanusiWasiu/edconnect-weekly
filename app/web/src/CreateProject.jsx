@@ -44,7 +44,7 @@ const CreateProject = () => {
         }
 
         // let asyncPost = async function () {
-        fetch("/api/register", {
+        fetch("/api/projects", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
