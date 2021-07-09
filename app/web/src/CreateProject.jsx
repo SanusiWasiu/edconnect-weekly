@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { Container, FormControl, Button, Col, Form, FormLabel, Row} from 'react-bootstrap';
 import Layout from './shared/Layout';
@@ -68,18 +67,21 @@ const CreateProject = () => {
         }).catch(err => console.log(err.message))
     }
 
-    let cookie = document.cookie.split(';').filter(item => item.trim().startsWith("uid"));
-    if (cookie.length > 0) { // If a cookie still exists 
-        let cookieName = cookie[0].trim().split('=')[1];
-        if (cookieName === '') {
+    useEffect(() => {
+        let cookie = document.cookie.split(';').filter(item => item.trim().startsWith("uid"));
+        if (cookie.length > 0) { // If a cookie still exists 
+            let cookieName = cookie[0].trim().split('=')[1];
+            if (cookieName === '') {
+                //window.location.href = "/project-explorer/login.html"; // Redirect to login.html
+                history.push('/login')
+
+            }
+        } else {
             //window.location.href = "/project-explorer/login.html"; // Redirect to login.html
             history.push('/login')
-
         }
-    } else {
-        //window.location.href = "/project-explorer/login.html"; // Redirect to login.html
-        history.push('/login')
-    }
+    },[])
+    
 
     return (
         <Layout>
