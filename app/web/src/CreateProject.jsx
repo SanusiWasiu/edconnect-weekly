@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { Container, FormControl, Button, Col, Form, FormLabel, Row} from 'react-bootstrap';
+import { Container, FormControl, Button, Col, Form, FormLabel, Row, Alert} from 'react-bootstrap';
 import Layout from './shared/Layout';
 
 const CreateProject = () => {
@@ -96,11 +96,11 @@ const CreateProject = () => {
                                 <Col>
                                     {console.log(validationError)}
                                     {(validationError.length > 0) ?
-                                   (<div className="alert alert-danger" role="alert" id='projectAlert'>
+                                   (<Alert className="alert-danger" role="alert" id='projectAlert'>
                                         {validationError.map((Error) => (
                                             <p>{Error}</p>
                                         ))}
-                                    </div>) : null}
+                                    </Alert>) : null}
                                 </Col>
                             </Row>
                         </Container>
