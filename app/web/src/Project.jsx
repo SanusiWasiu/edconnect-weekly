@@ -18,7 +18,7 @@ const Project = () => {
     useEffect(()=>{
         let asyncViewProj = async function(){
             const response = await fetch(`/api/projects/${projectId['id']}`)
-            if (response.status === 200){
+            if (response.status === 'ok'){
                 return response.json()
             }else{
                 throw new Error ("something went wrong")
@@ -37,7 +37,7 @@ const Project = () => {
             let createdById = data.createdBy
             fetch(`/api/users/${createdById}`)
                 .then(response =>{
-                    if (response.status === 200) {
+                    if (response.status === 'ok') {
                         return response.json();
                     } else {
                         throw new Error(`Response.status != 200 but: ${response.status}`)
