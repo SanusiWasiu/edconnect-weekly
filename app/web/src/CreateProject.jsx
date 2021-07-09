@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { Container, FormControl, Button, Col, Form, FormLabel, Row, Alert} from 'react-bootstrap';
+import { Container, FormControl, Button, Form, FormLabel, Alert} from 'react-bootstrap';
 import Layout from './shared/Layout';
 
 const CreateProject = () => {
@@ -11,6 +11,7 @@ const CreateProject = () => {
     const [Abstract, setAbstract] = useState('')
     const [Authors, setAuthors] = useState('')
     const [Tags, setTags] = useState('')
+    const [showAlert, setShowAlert] = useState(false);
     let history = useHistory()
 
     const handleInputChange = event => {
@@ -43,30 +44,26 @@ const CreateProject = () => {
             tags: Tags.split(",")
         }
 
-        // let asyncPost = async function () {
-        fetch("/api/projects", {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(postData)
-        })
-            .then(response => {
-                return response.json()
+        let asyncPost = async function () {
+            const response = await fetch("/api/projects", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(postData)
+            })
+            let uData = response.json()
+            return uData
+        }
+        asyncPost().then(uData => {
+            if (uData.status === 'ok') {
+                history.push("/")
+
+            } else {
+                setShowAlert(true);
+                setvalidationError(uData.errors)
             }
-            )
-
-            .then(uData => {
-                if (uData.status === 200) {
-                    history.push("/")
-
-                } else {
-                    if (validationError !== []) {
-                        setvalidationError([])
-                    }
-                    setvalidationError(uData.errors)
-                }
-            }).catch(err => console.log(err.message))
+        }).catch(err => console.log(err.message))
     }
 
     useEffect(() => {
@@ -94,17 +91,11 @@ const CreateProject = () => {
 
                         
                         <Container>
-                            <Row>
-                                <Col>
-                                    {console.log(validationError)}
-                                    {(validationError.length > 0) ?
-                                   (<Alert className="alert-danger" role="alert" id='projectAlert'>
-                                        {validationError.map((Error) => (
-                                            <p>{Error}</p>
-                                        ))}
-                                    </Alert>) : null}
-                                </Col>
-                            </Row>
+                            <Alert variant='danger' className="alert-danger" role="alert" show={showAlert}>
+                                {validationError.map((Error) => (
+                                    <p>{Error}</p>
+                                ))}
+                            </Alert>
                         </Container>
 
                         <FormLabel>Project name</FormLabel>
