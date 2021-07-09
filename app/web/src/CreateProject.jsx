@@ -43,28 +43,30 @@ const CreateProject = () => {
             tags: Tags.split(",")
         }
 
-        let asyncPost = async function () {
-            const response = await fetch("/api/register", {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(postData)
-            })
-            let uData = response.json()
-            return uData
-        }
-        asyncPost().then(uData => {
-            if (uData.status === 200) {
-                history.push("/")
-
-            } else {
-                if (validationError !== []) {
-                    setvalidationError([])
-                }
-                setvalidationError(uData.errors)
+        // let asyncPost = async function () {
+        fetch("/api/register", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(postData)
+        })
+            .then(response => {
+                return response.json()
             }
-        }).catch(err => console.log(err.message))
+            )
+
+            .then(uData => {
+                if (uData.status === 200) {
+                    history.push("/")
+
+                } else {
+                    if (validationError !== []) {
+                        setvalidationError([])
+                    }
+                    setvalidationError(uData.errors)
+                }
+            }).catch(err => console.log(err.message))
     }
 
     useEffect(() => {
