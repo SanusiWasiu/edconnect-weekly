@@ -80,7 +80,7 @@ const CreateProject = () => {
             //window.location.href = "/project-explorer/login.html"; // Redirect to login.html
             history.push('/login')
         }
-    },[])
+    })
     
 
     return (
