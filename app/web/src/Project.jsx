@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Container, Form, Row, Col, FormLabel} from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 //import { useHistory } from 'react-router';
 import Layout from './shared/Layout'
-import { useParams } from "react-router";
 
 const Project = () => {
 
@@ -12,43 +12,42 @@ const Project = () => {
     const [projectAuthors, setprojectAuthors] = useState([]);
     const [projectTags, setprojectTags] = useState();
     const [authorname, setauthorname] = useState();
-
-
+    
     let projectId = useParams()
-    useEffect(()=>{
-        let asyncViewProj = async function(){
+    useEffect(() => {
+        let asyncViewProj = async function () {
             const response = await fetch(`/api/projects/${projectId['id']}`)
-            if (response.status === 'ok'){
+            if (response.status === 'ok') {
                 return response.json()
-            }else{
-                throw new Error ("something went wrong")
+            } else {
+                throw new Error("something went wrong")
             }
         }
         asyncViewProj().then(data => {
-            
+
             setprojectname(data.name.toUpperCase);
-    
+
             setprojectAbstract(data.abstract);
 
             setprojectAuthors(data.authors);
 
             setprojectTags(data.tags.join(' '));
-    
+
             let createdById = data.createdBy
             fetch(`/api/users/${createdById}`)
-                .then(response =>{
+                .then(response => {
                     if (response.status === 'ok') {
                         return response.json();
                     } else {
                         throw new Error(`Response.status != 200 but: ${response.status}`)
                     }
                 })
-                .then(idData =>{
+                .then(idData => {
                     console.log(idData)
-                    setauthorname(idData.firstname + idData.lastname);
+                    setauthorname(`${idData.firstname} ${idData.lastname}`);
                 }).catch(error => console.log(error.message))
         }).catch(error => console.log(error.message))
-    
+
     
     })
 
