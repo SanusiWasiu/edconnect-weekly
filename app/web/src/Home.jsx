@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Jumbotron } from 'react-bootstrap';
+import { Col, Container, Jumbotron, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Layout from './shared/Layout';
 
@@ -34,28 +34,28 @@ const Home = () => {
                 </Container>
 
             </Jumbotron>
-            <div className="album">
-                <Container>
-                    <div className="row showcase my-4">
-                        {Projects.map((item, index) => (
-                            <div className="col">
-                                <div className="card my-2 py-4 px-2 box">
-                                    <div class="card-body">
-                                        <h5 className="card-title px-2 text-primary"><a href="viewproject.html?id={item.id}">{item.name}</a></h5>
-                                        <h6 className="card-subtitle my-lg-0 px-2 text-secondary">{item.authors.join(', ')}</h6>
-                                        <p className="card-text my-lg-0 py-2 px-2">{item.abstract}</p>
-                                    </div>
 
-                                    <div className="card-bottom d-flex justify-content-center align-items-center">
-                                        <small className="text-primary">{item.tags.join(' ')}</small>
-                                    </div>
-                                </div>
+            <Container>
+                <Row className="my-4">
+                    {Projects.map((item) => (
+                        <Col key={item.id}>
+
+                            <h5 className="px-2 text-primary">
+                                <Link to={`/projects/${item.id}`}>{item.projectname}</Link>
+                            </h5>
+                            <h6 className="my-lg-0 px-2 text-secondary" key={item.createdBy}>{item.authors.map(author => author).join(',')}</h6>
+                            <p className="my-lg-0 py-2 px-2">{item.abstract}</p>
+
+                            <div className="d-flex justify-content-center align-items-center" key={item.name}>
+                                <small className="text-primary"> {item.tags.map(tag => <Link to="#">{tag}</Link>)}</small>
                             </div>
-                        ))}
 
-                    </div>
-                </Container>
-            </div>
+                        </Col>
+                    ))}
+
+                </Row>
+            </Container>
+
         </Layout>
 
     )

@@ -13,10 +13,11 @@ const Project = () => {
     const [projectTags, setprojectTags] = useState();
     const [authorname, setauthorname] = useState();
     
-    let projectId = useParams()
+    const {id} = useParams()
+    // let { id } = projectId;
     useEffect(() => {
         let asyncViewProj = async function () {
-            const response = await fetch(`/api/projects/${projectId['id']}`)
+            const response = await fetch(`/api/projects/${id}`)
             if (response.status === 'ok') {
                 return response.json()
             } else {
@@ -25,7 +26,7 @@ const Project = () => {
         }
         asyncViewProj().then(data => {
 
-            setprojectname(data.name.toUpperCase);
+            setprojectname(data.name);
 
             setprojectAbstract(data.abstract);
 

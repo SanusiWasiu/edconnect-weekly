@@ -53,11 +53,13 @@ const CreateProject = () => {
                 body: JSON.stringify(postData)
             })
             let uData = response.json()
+            
             return uData
         }
         asyncPost().then(uData => {
             if (uData.status === 'ok') {
-                history.push("/")
+                console.log(uData)
+                // history.push("/")
 
             } else {
                 setShowAlert(true);
