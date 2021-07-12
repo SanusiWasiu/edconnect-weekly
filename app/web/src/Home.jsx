@@ -8,11 +8,12 @@ const Home = () => {
     useEffect(() => {
         fetch('/api/projects')
             .then((response) => {
-                if (response.status === 200) {
-                    return response.json();
-                } else {
-                    throw new Error('GET PROJECTS FAILED')
-                }
+                // if (response.status === 200) {
+                //     return response.json();
+                // } else {
+                //     throw new Error('GET PROJECTS FAILED')
+                // }
+                return response;
             })
             .then((data) => {
                 setProjects(data.slice(0, 4))
@@ -36,7 +37,7 @@ const Home = () => {
             </Jumbotron>
 
             <Container>
-                <Row className="my-4">
+                <Row className="showcase my-4">
                     {Projects.map((item, index) => (
                         <Col key={item.id}>
                             <div>
