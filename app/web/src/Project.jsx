@@ -8,10 +8,10 @@ import Layout from './shared/Layout'
 const Project = () => {
 
     const [projectname, setprojectname] = useState();
-    const [projectAbstract, setprojectAbstract] = useState();
+    const [projectAbstract, setprojectAbstract] = useState('');
     const [projectAuthors, setprojectAuthors] = useState([]);
-    const [projectTags, setprojectTags] = useState();
-    const [authorname, setauthorname] = useState();
+    const [projectTags, setprojectTags] = useState('');
+    const [authorname, setauthorname] = useState('');
     
     const {id} = useParams()
     // let { id } = projectId;
@@ -25,25 +25,26 @@ const Project = () => {
             }
         }
         asyncViewProj().then(data => {
+            const { abstract, authors, createdBy, name, tags } = data;
 
-            setprojectname(data.name);
+            setprojectname(name);
 
-            setprojectAbstract(data.abstract);
+            setprojectAbstract(abstract);
 
-            setprojectAuthors(data.authors);
+            setprojectAuthors(authors);
 
-            setprojectTags(data.tags.join(' '));
+            setprojectTags(tags.join(' '));
 
-            let createdById = data.createdBy
+            let createdById = createdBy
             fetch(`/api/users/${createdById}`)
-                .then(response => {
+                .then((response) => {
                     if (response.status === 'ok') {
                         return response.json();
                     } else {
                         throw new Error(`Response.status != 200 but: ${response.status}`)
                     }
                 })
-                .then(idData => {
+                .then((idData) => {
                     console.log(idData)
                     setauthorname(`${idData.firstname} ${idData.lastname}`);
                 }).catch(error => console.log(error.message))
@@ -54,75 +55,77 @@ const Project = () => {
 
     return (
         <Layout>
-            <Container className="my-4">
-                <h2 id="project_name"> {projectname} </h2>
-                <div className="row">
-                    <div className="col">
-                        <p>Created By</p>
-                        <p id="project_author"> {authorname} </p>
+            <>
+                <Container className="my-4">
+                    <h2 id="project_name"> {projectname} </h2>
+                    <div className="row">
+                        <div className="col">
+                            <p>Created By</p>
+                            <p id="project_author"> {authorname} </p>
+                        </div>
+                        <div className="col">
+                            <p>Date Created</p>
+                            <p>2020-08-30</p>
+                        </div>
+                        <div className="col">
+                            <p>Last Updated</p>
+                            <p>2020-08-30</p>
+                        </div>
+                        <div className="col d-flex justify-content-end align-items-right py-4">
+                            <a href="editproject.html" className="btn btn-primary">Edit Project</a>
+                        </div>
                     </div>
-                    <div className="col">
-                        <p>Date Created</p>
-                        <p>2020-08-30</p>
-                    </div>
-                    <div className="col">
-                        <p>Last Updated</p>
-                        <p>2020-08-30</p>
-                    </div>
-                    <div className="col d-flex justify-content-end align-items-right py-4">
-                        <a href="editproject.html" className="btn btn-primary">Edit Project</a>
-                    </div>
-                </div>
-            </Container>
+                </Container>
 
-            <Container>
-                
-                <Form className="form-group">
-                    
-                    <Row className="justify-content-between">
-                    
-                        <Col>
-                            <h6>Project Abstract</h6>
-                            <p id="project_abstract">
-                                {projectAbstract}
-                            </p>
+                <Container>
 
-                            <FormLabel>Comments</FormLabel>
-                            <textarea className="form-control" id="abstract" rows="8" type="textarea" name="abstract" placeholder="Leave a comment"></textarea><br/><br/>
-                            
-                        </Col>
+                    <Form className="form-group">
 
-                        <Col>
-                            <h6>Project details</h6>
-                            <div className="card mb-5">
-                                <div className="card-header">
-                                    <h5>Author(s)</h5>
-                                </div>
-                                <div className="card-body" id="project_authors">
-                                    {projectAuthors.map(author => {
-                                        return(<div><p className="card-text">{author}</p></div>)
-                                    })}
-                                </div>
-                                <div className="card-footer" id="project_tags">
-                                    <p className="card-text text-primary"> {projectTags} </p>
-                                </div>
-                            </div>
+                        <Row className="justify-content-between">
 
-                            <div className="card">
-                                <div className="card-header">
-                                    <h5>Project Files</h5>
+                            <Col>
+                                <h6>Project Abstract</h6>
+                                <p id="project_abstract">
+                                    {projectAbstract}
+                                </p>
+
+                                <FormLabel>Comments</FormLabel>
+                                <textarea className="form-control" id="abstract" rows="8" type="textarea" name="abstract" placeholder="Leave a comment"></textarea><br /><br />
+
+                            </Col>
+
+                            <Col>
+                                <h6>Project details</h6>
+                                <div className="card mb-5">
+                                    <div className="card-header">
+                                        <h5>Author(s)</h5>
+                                    </div>
+                                    <div className="card-body" id="project_authors">
+                                        {projectAuthors.map(author => {
+                                            return (<div><p className="card-text">{author}</p></div>)
+                                        })}
+                                    </div>
+                                    <div className="card-footer" id="project_tags">
+                                        <p className="card-text text-primary"> {projectTags} </p>
+                                    </div>
                                 </div>
-                                <div className="card-body">
-                                    <p className="card-text text-center text-muted">No files uploaded yet</p>
+
+                                <div className="card">
+                                    <div className="card-header">
+                                        <h5>Project Files</h5>
+                                    </div>
+                                    <div className="card-body">
+                                        <p className="card-text text-center text-muted">No files uploaded yet</p>
+                                    </div>
+
                                 </div>
-                                
-                            </div>
-                            
-                        </Col>
-                    </Row>
-                    <button type="submit" className="btn btn-primary">Save</button>
-                </Form>
-            </Container>
+
+                            </Col>
+                        </Row>
+                        <button type="submit" className="btn btn-primary">Save</button>
+                    </Form>
+                </Container>
+            </>
         </Layout>
     )
 }

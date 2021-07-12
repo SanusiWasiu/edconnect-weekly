@@ -37,19 +37,19 @@ const Home = () => {
 
             <Container>
                 <Row className="my-4">
-                    {Projects.map((item) => (
+                    {Projects.map((item, index) => (
                         <Col key={item.id}>
+                            <div>
+                                <h5 className="px-2 text-primary">
+                                    <Link className="btn btn-primary mr-sm-2" to={`/projects/${item.id}`}>{item.projectname}</Link>
+                                </h5>
+                                <h6 className="my-lg-0 px-2 text-secondary" key={item.createdBy}>{item.authors.map(author => author).join(',')}</h6>
+                                <p className="my-lg-0 py-2 px-2">{item.abstract}</p>
 
-                            <h5 className="px-2 text-primary">
-                                <Link to={`/projects/${item.id}`}>{item.projectname}</Link>
-                            </h5>
-                            <h6 className="my-lg-0 px-2 text-secondary" key={item.createdBy}>{item.authors.map(author => author).join(',')}</h6>
-                            <p className="my-lg-0 py-2 px-2">{item.abstract}</p>
-
-                            <div className="d-flex justify-content-center align-items-center" key={item.name}>
-                                <small className="text-primary"> {item.tags.map(tag => <Link to="#">{tag}</Link>)}</small>
+                                <div className="d-flex justify-content-center align-items-center" key={item.name}>
+                                    <small className="text-primary"> {item.tags.map(tag => <Link to="#">{tag}</Link>)}</small>
+                                </div>
                             </div>
-
                         </Col>
                     ))}
 

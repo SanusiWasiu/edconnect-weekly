@@ -7,7 +7,7 @@ const CreateProject = () => {
     
     const [validationError, setvalidationError] = useState([])
     
-    const [ProjectName, setprojectName] = useState('')
+    const [ProjectName, setprojectName] = useState()
     const [Abstract, setAbstract] = useState('')
     const [Authors, setAuthors] = useState('')
     const [Tags, setTags] = useState('')
@@ -56,10 +56,10 @@ const CreateProject = () => {
             
             return uData
         }
-        asyncPost().then(uData => {
+        asyncPost().then((uData) => {
             if (uData.status === 'ok') {
                 console.log(uData)
-                // history.push("/")
+                history.push("/")
 
             } else {
                 setShowAlert(true);
@@ -112,7 +112,7 @@ const CreateProject = () => {
                         <FormLabel>Tags</FormLabel>
                         <FormControl type="text" name="tags" value={Tags} onChange={handleInputChange} placeholder="Use # to tag project with different topics (e.g. #javascript #mongodb)"/><br/><br/>
                         
-                        <Button type="submit" className="btn btn-primary" id="contBtn">Continue</Button>
+                        <Button type="submit" className="btn btn-primary" id="contBtn" onClick={HandleSubmit}>Continue</Button>
                     </Container>
                 
                 </Form>    
