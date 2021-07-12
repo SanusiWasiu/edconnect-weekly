@@ -42,7 +42,9 @@ const Header = () => {
             document.cookie = 'uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
             history.push("/");
         }
-        history.push('/signup');
+        else{
+            history.push('/signup');
+        }
     }
     
     const HandleLogin = event => {
