@@ -13,7 +13,9 @@ const Home = () => {
                 // } else {
                 //     throw new Error('GET PROJECTS FAILED')
                 // }
-                return response;
+                let data = response.json();
+                console.log(data)
+                return data
             })
             .then((data) => {
                 setProjects(data.slice(0, 4))
@@ -38,11 +40,12 @@ const Home = () => {
 
             <Container>
                 <Row className="showcase my-4">
-                    {Projects.map((item, index) => (
+                    {Projects.map((item) => (
+                        
                         <Col key={item.id}>
                             <div>
                                 <h5 className="px-2 text-primary">
-                                    <Link className="btn btn-primary mr-sm-2" to={`/projects/${item.id}`}>{item.projectname}</Link>
+                                    <Link className="btn btn-primary mr-sm-2" variant='danger' to={`/projects/${item.id}`}>{item.name}</Link>
                                 </h5>
                                 <h6 className="my-lg-0 px-2 text-secondary" key={item.createdBy}>{item.authors.map(author => author).join(',')}</h6>
                                 <p className="my-lg-0 py-2 px-2">{item.abstract}</p>

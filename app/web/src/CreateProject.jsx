@@ -7,7 +7,7 @@ const CreateProject = () => {
     
     const [validationError, setvalidationError] = useState([])
     
-    const [ProjectName, setprojectName] = useState('')
+    const [ProjectName, setProjectName] = useState('')
     const [Abstract, setAbstract] = useState('')
     const [Authors, setAuthors] = useState('')
     const [Tags, setTags] = useState('')
@@ -18,7 +18,7 @@ const CreateProject = () => {
         const {name, value} = event.target;
         switch(name){
             case 'name':
-                setprojectName(value);
+                setProjectName(value);
                 break;
             case 'abstract':
                 setAbstract(value);
@@ -38,7 +38,7 @@ const CreateProject = () => {
 
 
         let postData = {
-            projectname: ProjectName,
+            name: ProjectName,
             abstract: Abstract,
             authors: Authors.split(","),
             tags: Tags.split(",")
