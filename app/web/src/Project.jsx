@@ -7,7 +7,7 @@ import Layout from './shared/Layout'
 
 const Project = () => {
 
-    const [projectname, setprojectname] = useState();
+    const [projectname, setprojectname] = useState('');
     const [projectAbstract, setprojectAbstract] = useState('');
     const [projectAuthors, setprojectAuthors] = useState([]);
     const [projectTags, setprojectTags] = useState('');
@@ -18,13 +18,16 @@ const Project = () => {
     useEffect(() => {
         let asyncViewProj = async function () {
             const response = await fetch(`/api/projects/${id}`)
-            if (response.status === 'ok') {
-                return response.json()
-            } else {
-                throw new Error("something went wrong")
-            }
+            // if (response.status === 'ok') {
+            //     return response.json()
+            // } else {
+            //     throw new Error("something went wrong")
+            // }
+            let res = response.json()
+            return res;
         }
         asyncViewProj().then(data => {
+            console.log(data)
             const { abstract, authors, createdBy, name, tags } = data;
 
             setprojectname(name);
@@ -38,11 +41,13 @@ const Project = () => {
             let createdById = createdBy
             fetch(`/api/users/${createdById}`)
                 .then((response) => {
-                    if (response.status === 'ok') {
-                        return response.json();
-                    } else {
-                        throw new Error(`Response.status != 200 but: ${response.status}`)
-                    }
+                    // if (response.status === 'ok') {
+                    //     return response.json();
+                    // } else {
+                    //     throw new Error(`Response.status != 200 but: ${response.status}`)
+                    // }
+                    let idata = response.json()
+                    return idata;
                 })
                 .then((idData) => {
                     console.log(idData)
@@ -51,7 +56,7 @@ const Project = () => {
         }).catch(error => console.log(error.message))
 
     
-    })
+    },[])
 
     return (
         <Layout>

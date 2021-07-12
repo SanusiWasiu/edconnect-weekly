@@ -7,7 +7,7 @@ const CreateProject = () => {
     
     const [validationError, setvalidationError] = useState([])
     
-    const [ProjectName, setprojectName] = useState()
+    const [ProjectName, setprojectName] = useState('')
     const [Abstract, setAbstract] = useState('')
     const [Authors, setAuthors] = useState('')
     const [Tags, setTags] = useState('')
